@@ -101,21 +101,51 @@ class _homeState extends State<Home> {
               ),
             ),
           ),
+          // Positioned(
+          //   top: 20,
+          //   right: 20,
+          //   child: IconButton(
+          //     icon: Icon(
+          //       isFavorite ? Icons.favorite : Icons.favorite_border,
+          //       color: Colors.red,
+          //     ),
+          //     onPressed: () {
+          //       setState(() {
+          //         isFavorite = !isFavorite;
+          //       });
+          //     },
+          //   ),
+          // ),
           Positioned(
             top: 20,
             right: 20,
-            child: IconButton(
-              icon: Icon(
-                isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: Colors.red,
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.grey,
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 2.0,
+                ),
               ),
-              onPressed: () {
-                setState(() {
-                  isFavorite = !isFavorite;
-                });
-              },
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    isFavorite = !isFavorite;
+                  });
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite,
+                    color: isFavorite ? Colors.red : Colors.grey[800],
+                  ),
+                ),
+              ),
             ),
-          ),
+          )
+
+
         ],
       ),
     );
@@ -123,7 +153,7 @@ class _homeState extends State<Home> {
 
   Widget roundedImage(String imagePath) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(6),
       child: Image.asset(
         imagePath,
         width: 100.0,
